@@ -5,50 +5,64 @@ import { arrow } from '../assets/icons'
 const InfoBox = ({ text, link, btnText = 'Open' }) => {
   return (
     <div className="info-box">
-    <p className='font-medium sm:text-xl text-center'>{text}</p>
-      <Link to={link} className='neo-brutalism-white neo-btn'>
+      <p className='font-medium sm:text-xl text-center'>
+        {text}
+      </p>
+
+      <Link 
+        to={link} 
+        className='neo-brutalism-white neo-btn'
+      >
         {btnText}
-        <img src={arrow} className='w-4 h-4 object-contain'/>
+
+        <img 
+          src={arrow}
+          alt='arrow'
+          className='w-4 h-4 object-contain'
+        />
       </Link>
     </div>
   )
 }
 
 const renderContent = {
-  1:(
+  1: (
     <h1 className='sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
-      Greetings! I'm <span className='font-semibold'>Nabil</span>👋
+      <b>Greetings!</b> I'm <span className='font-semibold'>Nabil</span> 👋
       <br />
       A Computer Engineering student
       <br />
       passionate about IoT and Web Development
     </h1>
   ),
-  2:(
-    <InfoBox 
-      text="Let me share a bit about myself and what I'm focusing on as a growing Computer Engineering student."
+
+  2: (
+    <InfoBox
+      text="Curious about my background and what I do? Explore my experience, technical interests, and the skills I've developed through hands-on projects."
       link="/about"
-      btnText="Learn more"
+      btnText="Explore About"
     />
   ),
-  3:(
-    <InfoBox 
-      text="You can explore the projects I’ve worked on as part of my learning journey in IoT, embedded systems, and software development."
+
+  3: (
+    <InfoBox
+      text="Take a look at the projects I've built across IoT, embedded systems, robotics, and web development, from small experiments to practical engineering solutions."
       link="/projects"
-      btnText="View projects"
+      btnText="Explore Projects"
     />
   ),
-  4:(
-    <InfoBox 
-      text="If you would like to connect or discuss potential internship opportunities, you can reach me through the contact section below."
+
+  4: (
+    <InfoBox
+      text="Have an opportunity, project idea, or just want to connect? Feel free to reach out and let's start a conversation."
       link="/contact"
-      btnText="Contact me"
+      btnText="Get in Touch"
     />
   ),
 }
 
-const HomeInfo = ( {currentStage} ) => {
-  return renderContent[currentStage]  || null;
+const HomeInfo = ({ currentStage }) => {
+  return renderContent[currentStage] || null
 }
 
 export default HomeInfo
