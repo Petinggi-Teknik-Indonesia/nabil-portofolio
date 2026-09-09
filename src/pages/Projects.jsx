@@ -36,9 +36,22 @@ const Projects = () => {
               <h4 className='text-2xl font-poppins font-semibold'>
                 {project.name}
               </h4>
+
               <p className='mt-2 text-slate-500 text-justify leading-relaxed'>
-                  {project.description}
+                {project.description}
               </p>
+
+              <div className='mt-4 flex flex-wrap gap-2'>
+                {project.technologies.map((technology) => (
+                  <span
+                    key={technology}
+                    className='px-3 py-1 rounded-full bg-slate-100 border border-slate-200 shadow-sm text-slate-600 text-xs font-medium font-poppins'
+                  >
+                    {technology}
+                  </span>
+                ))}
+              </div>
+
               <div className='mt-5 flex items-center gap-2 font-poppins'>
                 <Link
                   to={project.link}
@@ -48,6 +61,7 @@ const Projects = () => {
                 >
                   Live Link
                 </Link>
+
                 <img 
                   src={arrow}
                   alt='arrow'

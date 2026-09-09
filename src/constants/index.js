@@ -323,75 +323,96 @@ export const projects = [
         name: 'Follower Robot – Version 1',
         description: 'Developed an Arduino-based wall-following robot for educational robotics. Uses ultrasonic sensing and motor control to detect surrounding distances and perform autonomous movement.',
         link: 'https://github.com/njynbil/FollowerRobot-Version1',
+        technologies: ['Arduino', 'C++', 'Motor Control'],
     },
+
     {
         iconUrl: follower2,
         theme: 'btn-back-indigo',
         name: 'Follower Robot – Version 2',
         description: 'Developed an educational wall-following robot platform for hands-on robotics learning. Designed to support different programs and experiments involving sensors, motor control, and autonomous movement.',
         link: 'https://github.com/njynbil/FollowerRobot-Version2',
+        technologies: ['Arduino', 'Sensors', 'Motor Control'],
     },
+
     {
         iconUrl: gyrocar,
         theme: 'btn-back-violet',
         name: 'Gyro RC Car',
         description: 'Developed a wireless gesture-controlled RC car using dual ESP32 microcontrollers and an MPU6050 gyroscope. Enables real-time vehicle movement through hand gestures using transmitter and receiver systems.',
         link: 'https://github.com/njynbil/GyroRobot',
+        technologies: ['ESP32', 'MPU6050', 'Wireless Control'],
     },
+
     {
         iconUrl: spiderbot,
         theme: 'btn-back-amber',
         name: 'Spider Robot',
         description: 'Developed an Arduino-based spider robot using multiple servo motors for coordinated walking movements. Focused on hardware integration, embedded programming, and motion control for educational robotics.',
         link: 'https://github.com/njynbil/SpiderRobot',
+        technologies: ['Arduino', 'Servo Motor', 'C++'],
     },
+
     {
         iconUrl: tetris,
         theme: 'btn-back-rose',
         name: 'Tetris Game',
         description: 'Developed an Arduino-based Tetris game as an educational embedded systems project. Implements interactive gameplay through display output, physical controls, piece movement, rotation, and line clearing.',
         link: 'https://github.com/njynbil/TetrisGame',
+        technologies: ['Arduino', 'Display', 'C++'],
     },
+
     {
         iconUrl: dino,
         theme: 'btn-back-emerald',
         name: 'Dino Game',
         description: 'Developed an Arduino-based Dino Game as an educational embedded systems project. Implements an interactive endless runner with character movement, jumping, obstacle handling, and score tracking.',
         link: 'https://github.com/njynbil/DinoGame',
+        technologies: ['Arduino', 'Display', 'C++'],
     },
+
     {
         iconUrl: rfid,
         theme: 'btn-back-blue',
         name: 'RFID Scanner System for Optik Gembira',
         description: 'Created an RFID-based item scanning system for a local optical store called Optik Gembira to help track inventory and streamline item identification. Designed the hardware workflow and embedded logic using ESP32 and RFID modules.',
         link: 'https://github.com/Petinggi-Teknik-Indonesia/lensz-rfid-scanner',
+        technologies: ['ESP32', 'RFID', 'C++'],
     },
+
     {
         iconUrl: frugal,
         theme: 'btn-back-green',
         name: 'Frugal Watt – IoT Energy Monitoring',
         description: 'Developed an IoT prototype for real-time electricity usage monitoring using sensors and microcontroller integration. Built during Garuda Hacks 6.0 under a strict 30-hour time limit, handling all hardware design, wiring, and embedded programming.',
         link: 'https://github.com/Deswandy/Labubuntu',
+        technologies: ['ESP32','IoT', 'Sensors'],
     },
+
     {
         iconUrl: robot,
         theme: 'btn-back-red',
         name: 'Self-Balancing Robot (Arduino + MPU6050)',
         description: 'Built a two-wheel self-balancing robot using Arduino Uno, MPU6050 gyro, and PID control. Developed the full hardware setup and calibration logic while experimenting with real-time balancing control and motor tuning.',
         link: 'https://github.com/njynbil/self-balancing-robot',
+        technologies: ['Arduino', 'MPU6050', 'PID Control'],
     },
+
     {
         iconUrl: jualanmommy,
         theme: 'btn-back-pink',
         name: 'JualanMommy E-Commerce Website',
         description: 'Built a frontend interface for JualanMommy, an UMKM-focused website created to support product visibility and online sales. Designed to help small businesses reach more customers through a simple and accessible web platform.',
         link: 'https://github.com/lattemilii/UAS-WEBPROG',
+        technologies: ['HTML', 'CSS', 'JavaScript'],
     },
+
     {
         iconUrl: kspm,
         theme: 'btn-back-black',
         name: 'KSPM Organizational Website',
         description: 'Developed the frontend of an organizational website for Kelompok Studi Pasar Modal (KSPM). The platform was designed to showcase organizational profiles, activities, and educational content as part of a collaboration project.',
         link: 'https://github.com/Deswandy/KSPM-PTI-UAS',
+        technologies: ['HTML', 'CSS', 'JavaScript'],
     },
 ];
