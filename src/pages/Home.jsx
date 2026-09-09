@@ -65,6 +65,7 @@ const Home = () => {
             <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
                 {currentStage && <HomeInfo currentStage={currentStage} />}
             </div>
+
             <Canvas 
                 className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
                 camera={{ near: 0.1, far: 1000 }}
@@ -72,10 +73,16 @@ const Home = () => {
                 <Suspense fallback={<Loader/>}>
                     <directionalLight position={[1, 1, 1]} intensity={2} />
                     <ambientLight intensity={0.5} />
-                    <hemisphereLight skyColor="#b1e1ff" groundColor="#00000" intensity={1}/>
+                    <hemisphereLight 
+                        skyColor="#b1e1ff" 
+                        groundColor="#00000" 
+                        intensity={1}
+                    />
                     
                     <Bird />
+
                     <Sky isRotating={isRotating} />
+
                     <Island 
                         position={islandPosition}
                         scale={islandScale}
@@ -84,6 +91,7 @@ const Home = () => {
                         setIsRotating={setIsRotating}
                         setCurrentStage={setCurrentStage}
                     />
+
                     <Plane 
                         Scale={planeScale}
                         Position={planePosition}
@@ -93,11 +101,16 @@ const Home = () => {
                 </Suspense>
             </Canvas>
 
-            <div className='absolute bottom-2 left-2'>
+            <div
+                className="fixed left-4 z-50"
+                style={{
+                    bottom: 'max(16px, env(safe-area-inset-bottom))'
+                }}
+            >
                 <img 
                     src={!isPlayingMusic ? soundoff : soundon}
-                    alt='sound'
-                    className='w-10 h-10 cursor-pointer object-contain'
+                    alt="sound"
+                    className="w-10 h-10 cursor-pointer object-contain"
                     onClick={() => setIsPlayingMusic(!isPlayingMusic)}
                 />
             </div>
