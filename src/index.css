@@ -9,6 +9,10 @@
   --green-rgb: 125 161 35;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: "Work Sans", sans-serif;
 }
@@ -43,7 +47,7 @@ body:has(.card[data-color="green"]:hover) {
   }
 
   .textarea {
-    @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
+    @apply block p-2.5 text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
   }
 
   .btn {
