@@ -1,171 +1,353 @@
 import { useRef, useEffect } from "react"
-import { useGLTF } from "@react-three/drei";
-import { useFrame, useThree } from '@react-three/fiber'
-import { a } from '@react-spring/three'
+import { useGLTF } from "@react-three/drei"
+import { useFrame, useThree } from "@react-three/fiber"
+import { a } from "@react-spring/three"
 
-import islandScene from '../assets/3d/island.glb'
+import islandScene from "../assets/3d/island.glb"
 
-const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) =>  {
-    const islandRef = useRef();
+const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
+    const islandRef = useRef()
 
-    const { gl, viewport } = useThree();
-    const { nodes, materials } = useGLTF(islandScene);
+    const { gl } = useThree()
+    const { nodes, materials } = useGLTF(islandScene)
 
-    const lastX = useRef(0);
-    const rotationSpeed = useRef(0);
-    const dampingFactor = 0.95;
+    // =========================
+    // DRAG STATE
+    // =========================
+
+    const isDragging = useRef(false)
+    const lastX = useRef(0)
+
+    // =========================
+    // INERTIA
+    // =========================
+
+    const rotationSpeed = useRef(0)
+
+    // =========================
+    // TUNING
+    // =========================
+
+    const dragSensitivity = 0.004
+    const dampingFactor = 0.92
+
+    // =========================
+    // POINTER DOWN
+    // =========================
 
     const handlePointerDown = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        setIsRotating(true);
+        e.preventDefault()
 
-        const clientX = e.touches 
-            ? e.touches[0].clientX 
-            : e.clientX;
+        isDragging.current = true
 
-        lastX.current = clientX;
-    }
+        // TRUE ketika mouse/finger mulai ditekan
+        setIsRotating(true)
 
-    const handlePointerUp = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        setIsRotating(false);
-    }
+        lastX.current = e.clientX
 
-    const handlePointerMove = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        
-        if (isRotating) {
-            const clientX = e.touches 
-            ? e.touches[0].clientX 
-            : e.clientX;
+        // Reset inertia ketika mulai drag baru
+        rotationSpeed.current = 0
 
-            const delta = (clientX - lastX.current) / viewport.width;
-            islandRef.current.rotation.y += delta * 0.01 * Math.PI;
-            lastX.current = clientX;
-            rotationSpeed.current = delta * 0.01 * Math.PI;
+        // Capture pointer
+        if (e.currentTarget?.setPointerCapture) {
+            e.currentTarget.setPointerCapture(e.pointerId)
         }
     }
+
+    // =========================
+    // POINTER MOVE
+    // =========================
+
+    const handlePointerMove = (e) => {
+        if (!isDragging.current) return
+
+        e.preventDefault()
+
+        const currentX = e.clientX
+        const delta = currentX - lastX.current
+
+        const rotationDelta = delta * dragSensitivity
+
+        islandRef.current.rotation.y += rotationDelta
+
+        // Simpan velocity terakhir
+        rotationSpeed.current = rotationDelta
+
+        lastX.current = currentX
+
+        // IMPORTANT:
+        // Jangan pernah setIsRotating(false) di sini.
+        //
+        // Selama pointer masih ditekan:
+        //
+        // isDragging = true
+        // isRotating = true
+    }
+
+    // =========================
+    // POINTER UP
+    // =========================
+
+    const handlePointerUp = (e) => {
+        if (!isDragging.current) return
+
+        e.preventDefault()
+
+        isDragging.current = false
+
+        // BARU DI SINI berubah menjadi FALSE
+        setIsRotating(false)
+
+        if (e.currentTarget?.releasePointerCapture) {
+            try {
+                e.currentTarget.releasePointerCapture(e.pointerId)
+            } catch {
+                // Pointer capture sudah dilepas
+            }
+        }
+    }
+
+    // =========================
+    // POINTER CANCEL
+    // =========================
+
+    const handlePointerCancel = () => {
+        if (!isDragging.current) return
+
+        isDragging.current = false
+
+        // Browser membatalkan pointer interaction
+        setIsRotating(false)
+    }
+
+    // =========================
+    // KEYBOARD
+    // =========================
 
     const handleKeyDown = (e) => {
         if (e.key === "ArrowLeft") {
-            if (!isRotating) setIsRotating(true);
-            islandRef.current.rotation.y += 0.01 * Math.PI;
-            rotationSpeed.current = 0.0125;
-        } else if (e.key === "ArrowRight") {
-            if (!isRotating) setIsRotating(true);
-            islandRef.current.rotation.y -= 0.01 * Math.PI;
-            rotationSpeed.current = -0.0125;
-      }
+            setIsRotating(true)
+
+            islandRef.current.rotation.y += 0.01 * Math.PI
+
+            rotationSpeed.current = 0.0125
+        }
+
+        if (e.key === "ArrowRight") {
+            setIsRotating(true)
+
+            islandRef.current.rotation.y -= 0.01 * Math.PI
+
+            rotationSpeed.current = -0.0125
+        }
     }
 
     const handleKeyUp = (e) => {
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-            setIsRotating(false);
+        if (
+            e.key === "ArrowLeft" ||
+            e.key === "ArrowRight"
+        ) {
+            setIsRotating(false)
         }
     }
 
+    // =========================
+    // ANIMATION LOOP
+    // =========================
+
     useFrame(() => {
-      if (!isRotating) {
-        rotationSpeed.current *= dampingFactor;
-      if (Math.abs(rotationSpeed.current) < 0.001) {
-        rotationSpeed.current = 0;
-      }
+        // Inertia hanya berjalan setelah
+        // finger/mouse dilepas.
+        if (!isDragging.current) {
+            if (Math.abs(rotationSpeed.current) > 0.0001) {
+                islandRef.current.rotation.y += rotationSpeed.current
 
-      islandRef.current.rotation.y += rotationSpeed.current;
-    } else {
-          const rotation = islandRef.current.rotation.y;
-
-            /**
-             * Normalize the rotation value to ensure it stays within the range [0, 2 * Math.PI].
-             * The goal is to ensure that the rotation value remains within a specific range to
-             * prevent potential issues with very large or negative rotation values.
-             *  Here's a step-by-step explanation of what this code does:
-             *  1. rotation % (2 * Math.PI) calculates the remainder of the rotation value when divided
-             *     by 2 * Math.PI. This essentially wraps the rotation value around once it reaches a
-             *     full circle (360 degrees) so that it stays within the range of 0 to 2 * Math.PI.
-             *  2. (rotation % (2 * Math.PI)) + 2 * Math.PI adds 2 * Math.PI to the result from step 1.
-             *     This is done to ensure that the value remains positive and within the range of
-             *     0 to 2 * Math.PI even if it was negative after the modulo operation in step 1.
-             *  3. Finally, ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI) applies another
-             *     modulo operation to the value obtained in step 2. This step guarantees that the value
-             *     always stays within the range of 0 to 2 * Math.PI, which is equivalent to a full
-             *     circle in radians.
-             */
-            const normalizedRotation = ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-
-            // Set the current stage based on the island's orientation
-            switch (true) {
-              case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
-                setCurrentStage(4);
-              break;
-              case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
-                setCurrentStage(3);
-              break;
-              case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
-                setCurrentStage(2);
-              break;
-              case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
-                setCurrentStage(1);
-              break;
-              default:
-                setCurrentStage(null);
+                rotationSpeed.current *= dampingFactor
+            } else {
+                rotationSpeed.current = 0
             }
         }
-    });
+
+        // =========================
+        // NORMALIZE ROTATION
+        // =========================
+
+        const rotation = islandRef.current.rotation.y
+
+        const normalizedRotation =
+            ((rotation % (2 * Math.PI)) + 2 * Math.PI) %
+            (2 * Math.PI)
+
+        // =========================
+        // CURRENT STAGE
+        // =========================
+
+        switch (true) {
+            case normalizedRotation >= 5.45 &&
+                normalizedRotation <= 5.85:
+
+                setCurrentStage(4)
+                break
+
+            case normalizedRotation >= 0.85 &&
+                normalizedRotation <= 1.3:
+
+                setCurrentStage(3)
+                break
+
+            case normalizedRotation >= 2.4 &&
+                normalizedRotation <= 2.6:
+
+                setCurrentStage(2)
+                break
+
+            case normalizedRotation >= 4.25 &&
+                normalizedRotation <= 4.75:
+
+                setCurrentStage(1)
+                break
+
+            default:
+                setCurrentStage(null)
+        }
+    })
+
+    // =========================
+    // EVENT LISTENERS
+    // =========================
 
     useEffect(() => {
-        const canvas = gl.domElement;
-        canvas.addEventListener('pointerdown', handlePointerDown);
-        canvas.addEventListener('pointerup', handlePointerUp);
-        canvas.addEventListener('pointermove', handlePointerMove);
-        document.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('keyup', handleKeyUp);
+        const canvas = gl.domElement
+
+        // VERY IMPORTANT FOR MOBILE
+        // Prevent browser from interpreting
+        // the drag as page scrolling.
+        canvas.style.touchAction = "none"
+
+        // Pointer down starts on canvas
+        canvas.addEventListener(
+            "pointerdown",
+            handlePointerDown
+        )
+
+        // Move/up/cancel are attached to window
+        // so the gesture remains captured.
+        window.addEventListener(
+            "pointermove",
+            handlePointerMove
+        )
+
+        window.addEventListener(
+            "pointerup",
+            handlePointerUp
+        )
+
+        window.addEventListener(
+            "pointercancel",
+            handlePointerCancel
+        )
+
+        document.addEventListener(
+            "keydown",
+            handleKeyDown
+        )
+
+        document.addEventListener(
+            "keyup",
+            handleKeyUp
+        )
 
         return () => {
-            canvas.removeEventListener('pointerdown', handlePointerDown);
-            canvas.removeEventListener('pointerup', handlePointerUp);
-            canvas.removeEventListener('pointermove', handlePointerMove);
-            document.removeEventListener('keydown', handleKeyDown);
-            document.removeEventListener('keyup', handleKeyUp);
-        }
-    }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+            canvas.removeEventListener(
+                "pointerdown",
+                handlePointerDown
+            )
 
+            window.removeEventListener(
+                "pointermove",
+                handlePointerMove
+            )
+
+            window.removeEventListener(
+                "pointerup",
+                handlePointerUp
+            )
+
+            window.removeEventListener(
+                "pointercancel",
+                handlePointerCancel
+            )
+
+            document.removeEventListener(
+                "keydown",
+                handleKeyDown
+            )
+
+            document.removeEventListener(
+                "keyup",
+                handleKeyUp
+            )
+
+            canvas.style.touchAction = ""
+        }
+    }, [gl])
+
+    // =========================
+    // MODEL
+    // =========================
 
     return (
-    <a.group ref={islandRef} {...props}>
-      <mesh
-        geometry={nodes.polySurface944_tree_body_0.geometry}
-        material={materials.PaletteMaterial001}
-      />
-      <mesh
-        geometry={nodes.polySurface945_tree1_0.geometry}
-        material={materials.PaletteMaterial001}
-      />
-      <mesh
-        geometry={nodes.polySurface946_tree2_0.geometry}
-        material={materials.PaletteMaterial001}
-      />
-      <mesh
-        geometry={nodes.polySurface947_tree1_0.geometry}
-        material={materials.PaletteMaterial001}
-      />
-      <mesh
-        geometry={nodes.polySurface948_tree_body_0.geometry}
-        material={materials.PaletteMaterial001}
-      />
-      <mesh
-        geometry={nodes.polySurface949_tree_body_0.geometry}
-        material={materials.PaletteMaterial001}
-      />
-      <mesh
-        geometry={nodes.pCube11_rocks1_0.geometry}
-        material={materials.PaletteMaterial001}
-      />
-    </a.group>
-  )
+        <a.group ref={islandRef} {...props}>
+            <mesh
+                geometry={
+                    nodes.polySurface944_tree_body_0.geometry
+                }
+                material={materials.PaletteMaterial001}
+            />
+
+            <mesh
+                geometry={
+                    nodes.polySurface945_tree1_0.geometry
+                }
+                material={materials.PaletteMaterial001}
+            />
+
+            <mesh
+                geometry={
+                    nodes.polySurface946_tree2_0.geometry
+                }
+                material={materials.PaletteMaterial001}
+            />
+
+            <mesh
+                geometry={
+                    nodes.polySurface947_tree1_0.geometry
+                }
+                material={materials.PaletteMaterial001}
+            />
+
+            <mesh
+                geometry={
+                    nodes.polySurface948_tree_body_0.geometry
+                }
+                material={materials.PaletteMaterial001}
+            />
+
+            <mesh
+                geometry={
+                    nodes.polySurface949_tree_body_0.geometry
+                }
+                material={materials.PaletteMaterial001}
+            />
+
+            <mesh
+                geometry={
+                    nodes.pCube11_rocks1_0.geometry
+                }
+                material={materials.PaletteMaterial001}
+            />
+        </a.group>
+    )
 }
 
-export default Island;
+export default Island
