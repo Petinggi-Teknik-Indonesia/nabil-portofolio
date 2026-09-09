@@ -320,14 +320,14 @@ export const projects = [
     {
         iconUrl: follower1,
         theme: 'btn-back-sky',
-        name: 'Wall-Following Robot – Version 1',
+        name: 'Follower Robot – Version 1',
         description: 'Developed an Arduino-based wall-following robot for educational robotics. Uses ultrasonic sensing and motor control to detect surrounding distances and perform autonomous movement.',
         link: 'https://github.com/njynbil/FollowerRobot-Version1',
     },
     {
         iconUrl: follower2,
         theme: 'btn-back-indigo',
-        name: 'Wall-Following Robot – Version 2',
+        name: 'Follower Robot – Version 2',
         description: 'Developed an educational wall-following robot platform for hands-on robotics learning. Designed to support different programs and experiments involving sensors, motor control, and autonomous movement.',
         link: 'https://github.com/njynbil/FollowerRobot-Version2',
     },
