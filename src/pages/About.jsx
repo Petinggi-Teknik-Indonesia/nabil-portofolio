@@ -1,25 +1,19 @@
 import { skills, experiences } from '../constants';
-
 import React, { useState } from 'react';
-
 import ExperienceModal from '../components/ExperienceModal';
-
 import CTA from '../components/CTA';
 
 const About = () => {
-
   const [selectedExp, setSelectedExp] = useState(null);
 
   return (
-
     <section className="max-container">
-
-      <h1 className='head-text'>
-        Hello, I'm <span className='blue-gradient_text font-semibold drop-shadow'>Nabil</span>
+      <h1 className="head-text">
+        Hello, I'm <span className="blue-gradient_text font-semibold drop-shadow">Nabil</span>
       </h1>
 
-      <div className='mt-5 flex flex-col gap-3 text-slate-500'>
-        <p className='text-justify leading-relaxed'>
+      <div className="mt-5 flex flex-col gap-3 text-slate-500">
+        <p className="text-justify leading-relaxed">
           A Computer Engineering student with hands-on experience in IoT, embedded systems, robotics, and web development.
           I have worked on hardware–software integration projects involving Arduino, ESP32, sensors, actuators, and embedded programming.
           I also have experience developing web-based applications and backend systems, allowing me to work across both hardware and software.
@@ -28,118 +22,82 @@ const About = () => {
         </p>
       </div>
 
-      <div className='py-10 flex flex-col'>
+      <div className="py-10 flex flex-col">
+        <h3 className="subhead-text">My Skills</h3>
 
-        <h3 className='subhead-text'>My Skills</h3>
-
-        {/* Mobile: 3 columns
-            Tablet/Desktop: original flex layout */}
-        <div className='mt-16 grid grid-cols-3 gap-6 sm:flex sm:flex-wrap sm:gap-12'>
-
+        <div className="mt-12 grid grid-cols-3 gap-5 sm:flex sm:flex-wrap sm:gap-8">
           {skills.map((skill) => (
-
-            <div key={skill.name} className='block-container w-20 h-20'>
-
-              <div className='btn-back rounded-xl'/>
-
-              <div className='btn-front rounded-xl flex justify-center items-center'>
-
+            <div key={skill.name} className="block-container w-16 h-16">
+              <div className="btn-back rounded-xl" />
+              <div className="btn-front rounded-xl flex justify-center items-center">
                 <img
                   src={skill.imageUrl}
                   alt={skill.name}
-                  className='w-1/2 h-1/2 object-contain'
+                  className="w-1/2 h-1/2 object-contain"
                 />
-
               </div>
-
             </div>
-
           ))}
-
         </div>
-
       </div>
 
-      <div className='py-16'>
+      <div className="py-16">
+        <h3 className="subhead-text">Experiences</h3>
 
-        <h3 className='subhead-text'>Experiences</h3>
-
-        <div className='mt-5 flex flex-col gap-3 text-slate-500'>
-
-          <p className='text-justify leading-relaxed'>
+        <div className="mt-5 flex flex-col gap-3 text-slate-500">
+          <p className="text-justify leading-relaxed">
             Explore my organizational experiences, leadership roles, and competition involvement throughout my studies.
             Each experience highlights the responsibilities and skills I developed along the way.
           </p>
-
         </div>
 
-        <div className='mt-20 w-full'>
-
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-28'>
-
+        <div className="mt-16 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {experiences.map((exp) => (
-
-              <div key={exp.title} className='flex flex-col items-stretch'>
-
+              <div key={exp.title} className="flex flex-col items-stretch">
                 <div
                   role="button"
                   tabIndex={0}
-                  onClick={() => {
-                    console.log('open experience (card)', exp?.title);
-                    setSelectedExp(exp);
-                  }}
+                  onClick={() => setSelectedExp(exp)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       setSelectedExp(exp);
                     }
                   }}
-                  className='block-container w-72 min-h-48 p-5 flex flex-col justify-start items-start cursor-pointer'
+                  className="block-container w-full min-h-48 p-5 flex flex-col justify-start items-start cursor-pointer"
                 >
+                  <div className="btn-back rounded-xl" />
 
-                  <div className='btn-back rounded-xl'/>
-
-                  <div className='btn-front rounded-xl p-5 flex flex-col gap-3'>
-
+                  <div className="btn-front rounded-xl p-5 flex flex-col gap-3">
                     {exp?.icon ? (
-
                       <img
                         src={exp.icon}
-                        className='w-10 h-10 object-contain'
+                        className="w-10 h-10 object-contain"
                         alt={exp.company_name}
                       />
-
                     ) : (
-
-                      <div className='w-10 h-10 bg-white/20 rounded mb-2 flex items-center justify-center'>
+                      <div className="w-10 h-10 bg-white/20 rounded mb-2 flex items-center justify-center">
                         No
                       </div>
-
                     )}
 
-                    <h3 className='font-semibold text-lg text-slate-800'>
+                    <h3 className="font-semibold text-lg text-slate-800">
                       {exp.title}
                     </h3>
 
-                    <p className='text-slate-500 text-sm'>
+                    <p className="text-slate-500 text-sm">
                       {exp.company_name}
                     </p>
 
-                    <p className='text-slate-400 text-xs'>
+                    <p className="text-slate-400 text-xs">
                       {exp.date}
                     </p>
-
                   </div>
-
                 </div>
-
               </div>
-
             ))}
-
           </div>
-
         </div>
-
       </div>
 
       <ExperienceModal
@@ -151,12 +109,11 @@ const About = () => {
         points={selectedExp?.points}
       />
 
-      <hr className='border-slate-200'/>
+      <hr className="border-slate-200" />
 
       <CTA />
-
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;

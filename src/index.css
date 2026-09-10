@@ -47,7 +47,7 @@ body:has(.card[data-color="green"]:hover) {
   }
 
   .textarea {
-    @apply block p-2.5 text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
+    @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
   }
 
   .btn {
@@ -94,9 +94,12 @@ body:has(.card[data-color="green"]:hover) {
 .logo {
   border-radius: 8.889px;
   background: #fff;
-  box-shadow: 0px 10px 35px -4px rgba(67, 83, 255, 0.15),
+  box-shadow:
+    0px 10px 35px -4px rgba(67, 83, 255, 0.15),
     0px 1.5px 4px -1px rgba(67, 83, 255, 0.2);
 }
+
+/* 3D Block Effect */
 
 .block-container {
   position: relative;
@@ -113,9 +116,14 @@ body:has(.card[data-color="green"]:hover) {
   transition: 250ms;
   transform-style: preserve-3d;
   transform-origin: bottom right;
-  transform: rotateZ(15deg);
+
+  /* Moderate background tilt */
+  transform: rotateZ(9deg);
+
   will-change: transform;
-  box-shadow: 16px 0 40px #e4e4e4;
+
+  /* Soft shadow */
+  box-shadow: 10px 8px 25px rgba(228, 228, 228, 0.75);
 }
 
 .block-container .btn-back-red {
@@ -185,27 +193,38 @@ body:has(.card[data-color="green"]:hover) {
   overflow: hidden;
 }
 
+/* Moderate 3D hover */
+
 .block-container:hover > .btn-back {
-  transform: translateZ(20px) rotateZ(15deg) rotateX(-20deg) rotateY(-20deg);
+  transform: translateZ(14px) rotateZ(9deg) rotateX(-12deg) rotateY(-12deg);
 }
 
 .block-container:hover > .btn-front {
-  transform: translateZ(80px) translateY(-5px) rotateX(15deg) rotateY(15deg);
+  transform: translateZ(50px) translateY(-3px) rotateX(9deg) rotateY(9deg);
 }
 
 /* Neo Brutalism */
+
 .neo-brutalism-blue {
   background: #2b77e7;
   position: relative;
   border-radius: 10px;
   border: #2b77e7;
-  box-shadow: 0.6vmin 0.6vmin #336cc1, 1vmin 1vmin #0092db, 1vmin 1vmin #0092db,
-    0.65vmin 1vmin #0092db, 1vmin 0.65vmin #0092db;
+  box-shadow:
+    0.6vmin 0.6vmin #336cc1,
+    1vmin 1vmin #0092db,
+    1vmin 1vmin #0092db,
+    0.65vmin 1vmin #0092db,
+    1vmin 0.65vmin #0092db;
 }
 
 .neo-brutalism-white {
   background: #fff;
   border: #fff;
-  box-shadow: 0.6vmin 0.6vmin #fff, 1vmin 1vmin #d2e4ff, 1vmin 1vmin #d2e4ff,
-    0.65vmin 1vmin #d2e4ff, 1vmin 0.65vmin #d2e4ff;
+  box-shadow:
+    0.6vmin 0.6vmin #fff,
+    1vmin 1vmin #d2e4ff,
+    1vmin 1vmin #d2e4ff,
+    0.65vmin 1vmin #d2e4ff,
+    1vmin 0.65vmin #d2e4ff;
 }
