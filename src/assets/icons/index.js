@@ -33,6 +33,12 @@ import laravel from './laravel.svg'
 import mysql from './mysql.svg'
 import python from './python.svg'
 import cpp from './cpp.svg'
+import PostgresSQL from './PostgresSQL.png'
+import SQLServer from './SQLServer.png'
+import RestAPI from './RestAPI.png'
+import DBeaver from './DBeaver.png'
+import GitLab from './GitLab.png'
+import ArduinoIDE from './Arduino.png'
 import dino from './dino.png'
 import follower1 from './follower1.png'
 import follower2 from './follower2.png'
@@ -82,6 +88,12 @@ export {
     mysql,
     python,
     cpp,
+    PostgresSQL,
+    SQLServer,
+    RestAPI,
+    DBeaver,
+    GitLab,
+    ArduinoIDE,
     dino,
     follower1,
     follower2,

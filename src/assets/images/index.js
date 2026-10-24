@@ -15,6 +15,7 @@ import acesday from './acesday.png'
 import acesday23 from './acesday23.png'
 import umnfest from './umnfest.png'
 import inventing from './inventing.png'
+import summarecon from './Summarecon.png'
 
 export {
     hero,
@@ -34,4 +35,5 @@ export {
     acesday23,
     umnfest,
     inventing,
+    summarecon,
 }

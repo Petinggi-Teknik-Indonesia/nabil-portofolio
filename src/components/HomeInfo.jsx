@@ -27,34 +27,34 @@ const InfoBox = ({ text, link, btnText = 'Open' }) => {
 
 const renderContent = {
   1: (
-    <h1 className='sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
-      <b>Greetings!</b> I'm <span className='font-semibold'>Nabil</span> 👋
+    <h1 className='text-base sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-6 sm:px-8 text-white mx-5'>
+      <b>Hi, I'm</b> <span className='font-semibold'>Nabil</span>
       <br />
-      A Computer Engineering student
+      A Computer Engineering student at Universitas Multimedia Nusantara
       <br />
-      passionate about IoT and Web Development
+      building practical solutions across software, IoT, and embedded systems
     </h1>
   ),
 
   2: (
     <InfoBox
-      text="Curious about my background and what I do? Explore my experience, technical interests, and the skills I've developed through hands-on projects."
+      text="My experience spans web application development, IoT product work, and teaching programming. Explore the skills and experiences behind my work across software and hardware."
       link="/about"
-      btnText="Explore About"
+      btnText="About Me"
     />
   ),
 
   3: (
     <InfoBox
-      text="Take a look at the projects I've built across IoT, embedded systems, robotics, and web development, from small experiments to practical engineering solutions."
+      text="From educational robots and embedded prototypes to web interfaces, these projects show how I approach practical engineering challenges and build useful solutions."
       link="/projects"
-      btnText="Explore Projects"
+      btnText="View Projects"
     />
   ),
 
   4: (
     <InfoBox
-      text="Have an opportunity, project idea, or just want to connect? Feel free to reach out and let's start a conversation."
+      text="Interested in an internship, collaboration, or a technical conversation? I'd be glad to connect and hear what you're working on."
       link="/contact"
       btnText="Get in Touch"
     />

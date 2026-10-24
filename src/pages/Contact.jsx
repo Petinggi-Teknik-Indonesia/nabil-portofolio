@@ -1,4 +1,4 @@
-import React, { useState, useRef, Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Canvas } from "@react-three/fiber";
 import emailjs from '@emailjs/browser';
 import Loader from '../components/Loader';
@@ -7,7 +7,6 @@ import useAlert from '../hooks/useAlert';
 import Alert from '../components/Alert';
 
 const Contact = () => {
-  const formRef = useRef(null);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -45,8 +44,7 @@ const Contact = () => {
       setIsLoading(false);
 
       showAlert({
-        show: true,
-        text: 'Message sent successfully!',
+        text: "Message sent! I'll get back to you soon.",
         type: 'success'
       });
 
@@ -60,15 +58,12 @@ const Contact = () => {
         });
       }, 3000);
 
-    }).catch((error) => {
+    }).catch(() => {
       setIsLoading(false);
       setCurrentAnimation('idle');
 
-      console.log(error);
-
       showAlert({
-        show: true,
-        text: 'I didn\'t receive your message',
+        text: 'Message not sent. Try again or email me at najy.nabil@gmail.com.',
         type: 'danger'
       });
     });
@@ -91,11 +86,16 @@ const Contact = () => {
           Get in touch
         </h1>
 
+        <p className='mt-3 text-slate-500 leading-relaxed'>
+          Send me a message directly by email. I'll get back to you as soon as I can.
+        </p>
+
         <form
-          ref={formRef}
-          className='w-full flex flex-col gap-7 mt-14'
+          className='w-full flex flex-col gap-5 mt-8'
           onSubmit={handleSubmit}
+          aria-busy={isLoading}
         >
+          <fieldset disabled={isLoading} className='contents'>
           <label className='block w-full text-black-500 font-semibold'>
             Name
 
@@ -147,16 +147,16 @@ const Contact = () => {
           <button
             type='submit'
             className='btn'
-            disabled={isLoading}
             onFocus={handleFocus}
             onBlur={handleBlur}
           >
             {isLoading ? 'Sending...' : 'Send Message'}
           </button>
+          </fieldset>
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full h-[350px] md:h-[450px] lg:h-auto lg:min-h-[500px]'>
+      <div aria-hidden='true' className='lg:w-1/2 w-full h-[280px] sm:h-[350px] md:h-[420px] lg:h-auto lg:min-h-[500px]'>
         <Canvas
           camera={{
             position: [0, 0, 5],

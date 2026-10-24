@@ -18,6 +18,14 @@ const Home = () => {
     const [isRotating, setIsRotating] = useState(false);
     const [currentStage, setCurrentStage] = useState(1);
     const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+    const [screenWidth, setScreenWidth] = useState(() => window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => setScreenWidth(window.innerWidth);
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         if(isPlayingMusic) {
@@ -34,7 +42,7 @@ const Home = () => {
         let screenPosition = [0, -6.5, -43];
         let rotation = [0.1, 4.7, 0]
 
-        if (window.innerWidth <= 768) {
+        if (screenWidth <= 768) {
             screenScale = [0.9, 0.9, 0.9];
         } else {
             screenScale = [1, 1, 1];
@@ -43,26 +51,12 @@ const Home = () => {
         return [screenScale, screenPosition];
     }
 
-    const adjustPlaneForScreenSize = () => {
-        let screenScale, screenPosition;
-
-        if (window.innerWidth <= 768) {
-            screenScale = [1.5, 1.5, 1.5];
-            screenPosition = [0, -1.5, 0];
-        } else {
-            screenScale = [3, 3, 3];
-            screenPosition = [0, -4, -4];
-        }
-
-        return [screenScale, screenPosition];
-    }
-
     const [islandScale, islandPosition, islandRotation] = adjustIslandForScreenSize();
-    const [planeScale, planePosition] = adjustPlaneForScreenSize();
+    const planePosition = [0, 0, 0];
 
     return (
         <section className="w-full h-screen relative">
-            <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+            <div className="absolute top-24 sm:top-28 left-0 right-0 z-10 flex items-center justify-center px-2">
                 {currentStage && <HomeInfo currentStage={currentStage} />}
             </div>
 
@@ -93,13 +87,19 @@ const Home = () => {
                     />
 
                     <Plane 
-                        Scale={planeScale}
-                        Position={planePosition}
+                        position={planePosition}
                         isRotating={isRotating}
                         rotation={[0, 20, 0]}
                     />
                 </Suspense>
             </Canvas>
+
+            <p
+                className="fixed left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/75 px-4 py-2 text-xs sm:text-sm text-slate-600 shadow-sm backdrop-blur-sm pointer-events-none whitespace-nowrap"
+                style={{ bottom: 'max(16px, env(safe-area-inset-bottom))' }}
+            >
+                Drag the island to explore
+            </p>
 
             <div
                 className="fixed left-4 z-50"

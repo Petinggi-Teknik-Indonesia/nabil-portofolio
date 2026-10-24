@@ -203,6 +203,30 @@ body:has(.card[data-color="green"]:hover) {
   transform: translateZ(50px) translateY(-3px) rotateX(9deg) rotateY(9deg);
 }
 
+/* Keep experience card backplates subtle so they do not crowd neighboring cards. */
+.experience-card > .btn-back {
+  transform: rotateZ(3deg) scale(0.97);
+  box-shadow: 6px 5px 16px rgba(148, 163, 184, 0.2);
+}
+
+.experience-card:hover > .btn-back {
+  transform: translateZ(8px) rotateZ(3deg) rotateX(-6deg) rotateY(-6deg) scale(0.97);
+}
+
+.skill-card > .btn-back {
+  transform: rotateZ(12deg);
+}
+
+.skill-card:hover > .btn-back {
+  transform: translateZ(14px) rotateZ(12deg) rotateX(-12deg) rotateY(-12deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .skill-card:hover + .skill-tooltip {
+    opacity: 1;
+  }
+}
+
 /* Neo Brutalism */
 
 .neo-brutalism-blue {

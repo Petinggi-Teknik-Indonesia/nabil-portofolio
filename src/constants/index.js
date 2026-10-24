@@ -14,6 +14,7 @@ import {
     acesday23,
     umnfest,
     inventing,
+    summarecon,
 } from "../assets/images";
 
 import {
@@ -41,13 +42,17 @@ import {
     tailwindcss,
     threads,
     typescript,
-    arduino,
     kicad,
     php,
     laravel,
     mysql,
     python,
     cpp,
+    PostgresSQL,
+    SQLServer,
+    DBeaver,
+    GitLab,
+    ArduinoIDE,
     dino,
     follower1,
     follower2,
@@ -63,239 +68,89 @@ import {
 } from "../assets/icons";
 
 export const skills = [
-    {
-        imageUrl: html,
-        name: "HTML",
-        type: "Frontend",
-    },
-    {
-        imageUrl: css,
-        name: "CSS",
-        type: "Frontend",
-    },
-    {
-        imageUrl: javascript,
-        name: "JavaScript",
-        type: "Frontend",
-    },
-    {
-        imageUrl: react,
-        name: "React",
-        type: "Frontend",
-    },
-    {
-        imageUrl: tailwindcss,
-        name: "Tailwind CSS",
-        type: "Frontend",
-    },
-    {
-        imageUrl: php,
-        name: "PHP",
-        type: "Backend",
-    },
-    {
-        imageUrl: laravel,
-        name: "Laravel",
-        type: "Backend",
-    },
-    {
-        imageUrl: nodejs,
-        name: "Node.js",
-        type: "Backend",
-    },
-    {
-        imageUrl: express,
-        name: "Express.js",
-        type: "Backend",
-    },
-    {
-        imageUrl: mysql,
-        name: "MySQL",
-        type: "Database",
-    },
-    {
-        imageUrl: python,
-        name: "Python",
-        type: "Programming",
-    },
-    {
-        imageUrl: cpp,
-        name: "C++",
-        type: "Programming",
-    },
-    {
-        imageUrl: arduino,
-        name: "Arduino",
-        type: "IoT",
-    },
-    {
-        imageUrl: kicad,
-        name: "KiCad",
-        type: "IoT",
-    },
-    {
-        imageUrl: wokwi,
-        name: "Wokwi",
-        type: "IoT",
-    },
-    {
-        imageUrl: git,
-        name: "Git",
-        type: "Version Control",
-    },
-    {
-        imageUrl: github,
-        name: "GitHub",
-        type: "Version Control",
-    },
+    { imageUrl: php, name: "PHP", type: "Programming Languages" },
+    { imageUrl: javascript, name: "JavaScript", type: "Programming Languages" },
+    { imageUrl: python, name: "Python", type: "Programming Languages" },
+    { imageUrl: cpp, name: "C++", type: "Programming Languages" },
+    { imageUrl: html, name: "HTML", type: "Web Development & Frameworks" },
+    { imageUrl: css, name: "CSS", type: "Web Development & Frameworks" },
+    { imageUrl: react, name: "React", type: "Web Development & Frameworks" },
+    { imageUrl: laravel, name: "Laravel", type: "Web Development & Frameworks" },
+    { imageUrl: nodejs, name: "Node.js", type: "Web Development & Frameworks" },
+    { imageUrl: express, name: "Express.js", type: "Web Development & Frameworks" },
+    { imageUrl: PostgresSQL, name: "PostgreSQL", type: "Databases" },
+    { imageUrl: mysql, name: "MySQL", type: "Databases" },
+    { imageUrl: SQLServer, name: "SQL Server", type: "Databases" },
+    { imageUrl: git, name: "Git", type: "Development Tools & Version Control" },
+    { imageUrl: github, name: "GitHub", type: "Development Tools & Version Control" },
+    { imageUrl: GitLab, name: "GitLab", type: "Development Tools & Version Control" },
+    { imageUrl: DBeaver, name: "DBeaver", type: "Development Tools & Version Control" },
+    { imageUrl: ArduinoIDE, name: "Arduino IDE", type: "IoT & Embedded Systems" },
+    { imageUrl: kicad, name: "KiCad", type: "Electronics & Hardware Design" },
 ];
 
 export const experiences = [
-    {
-        title: "Internet of Things Engineer",
-        company_name: "PT Startup Inovasi Indonesia",
-        date: "January 2026 – July 2026",
-        icon: inventing,
-        iconBg: "#dbeafe",
-        points: [
-            "Developed educational robotics and IoT products from concept design, hardware assembly, sensor integration, programming, testing, and evaluation.",
-            "Built robotics systems using Arduino, sensors, actuators, and microcontrollers.",
-            "Designed robotics curriculum for hands-on learning activities.",
-            "Delivered robotics workshops and supported students during practical sessions.",
-            "Worked using Scrum methodology throughout product and curriculum development."
-        ]
-    },
-    {
-        title: "Robotics Instructor",
-        company_name: "Syafana Islamic School",
-        icon: syafana,
-        iconBg: "#ffe8cc",
-        date: "November 2025 – Present",
-        points: [
-            "Delivered robotics and embedded systems lessons through project-based learning for elementary and junior high school students.",
-            "Guided students in assembling electronic circuits, integrating sensors and actuators, and programming Arduino-based projects using Arduino IDE.",
-            "Mentored students in hardware troubleshooting, programming logic, and system integration.",
-            "Promoted problem-solving and teamwork through practical robotics applications."
-        ]
-    },
-    {
-        title: "Hackathon Participant",
-        company_name: "Garuda Hacks 6.0",
-        icon: garudahacks,
-        iconBg: "#fff3cd",
-        date: "July 2025",
-        points: [
-            "Participated in Garuda Hacks 6.0 as part of a team-based technology competition.",
-            "Contributed to the development of a functional prototype under a limited development timeframe.",
-            "Collaborated with team members to develop, test, and refine the project solution.",
-            "Applied programming and problem-solving skills to address project requirements."
-        ]
-    },
-    {
-        title: "Academic Coordinator",
-        company_name: "Association of Computer Engineering Students (ACES)",
-        icon: aces,
-        iconBg: "#d9e6ff",
-        date: "November 2024 – Present",
-        points: [
-            "Coordinated academic initiatives, educational events, workshops, and student development programs.",
-            "Collaborated with committees to manage planning, scheduling, and event execution.",
-            "Maintained communication between academic-related teams and committee members.",
-            "Supported the delivery of activities while ensuring an effective experience for participants."
-        ]
-    },
-    {
-        title: "Accommodation Coordinator",
-        company_name: "EUFORIA UMN 2025",
-        icon: euforia,
-        iconBg: "#ffe5ef",
-        date: "February 2025 – September 2025",
-        points: [
-            "Coordinated accommodation and logistics for guest stars, vendors, and event operations.",
-            "Managed rider requests, food supplies, and logistical resources throughout the event.",
-            "Successfully handled over 200 requested items without shortages or significant delays.",
-            "Coordinated with cross-functional committees to ensure smooth event execution and stakeholder satisfaction."
-        ]
-    },
-    {
-        title: "Accommodation Coordinator",
-        company_name: "PPTK UMN 2025",
-        icon: pptk,
-        iconBg: "#f5e8ff",
-        date: "May 2025 – September 2025",
-        points: [
-            "Coordinated accommodation and logistical preparation for event operations.",
-            "Managed equipment, venue arrangements, and operational resources throughout the program.",
-            "Collaborated with committee members to ensure resource availability and smooth event execution.",
-            "Supported operational planning and coordination across different event activities."
-        ]
-    },
-    {
-        title: "Accommodation Coordinator",
-        company_name: "UMN Volleyball Championship 2024",
-        icon: uvc,
-        iconBg: "#e8f0ff",
-        date: "March 2024 – November 2024",
-        points: [
-            "Coordinated venue operations, equipment, and event setup for the competition.",
-            "Ensured the safety of electronic equipment during continuous rainfall through rapid relocation and protective handling.",
-            "Maintained court readiness to minimize event disruptions during the competition.",
-            "Designed event decorations in collaboration with the committee to support the overall event execution."
-        ]
-    },
-    {
-        title: "Accommodation Staff",
-        company_name: "UMN Festival 2024",
-        icon: umnfest,
-        iconBg: "#f0f4ff",
-        date: "March 2024 – November 2024",
-        points: [
-            "Supported accommodation and event logistics throughout the festival.",
-            "Prepared equipment and coordinated venue arrangements.",
-            "Assisted with on-site operational activities and resource management.",
-            "Collaborated with committee members to ensure smooth execution of festival activities."
-        ]
-    },
-    {
-        title: "Accommodation Staff",
-        company_name: "Computer Engineering Freshmen Orientation",
-        icon: pptk,
-        iconBg: "#fef3c7",
-        date: "2024",
-        points: [
-            "Supported the planning and execution of the Computer Engineering Freshmen Orientation Program.",
-            "Coordinated venue logistics and prepared equipment and learning materials.",
-            "Designed and executed the 'Tebak & Rangkai' Arduino-based activity.",
-            "Prepared component kits, supporting guides, and circuit schematics for participants.",
-            "Coordinated equipment procurement to ensure resources were available for all sessions."
-        ]
-    },
-    {
-        title: "Accommodation Committee Member",
-        company_name: "ACES Day 2024",
-        icon: acesday,
-        iconBg: "#e8f0ff",
-        date: "May 2024 – November 2024",
-        points: [
-            "Supported event planning and execution through equipment preparation and venue coordination.",
-            "Managed event resources and ensured operational readiness throughout the program.",
-            "Collaborated with committee members during on-site operations.",
-            "Assisted in maintaining smooth event activities for participants."
-        ]
-    },
-    {
-        title: "Accommodation Committee Member",
-        company_name: "ACES Day 2023",
-        icon: acesday23,
-        iconBg: "#e8f0ff",
-        date: "May 2023 – November 2023",
-        points: [
-            "Supported event planning and execution through equipment and venue preparation.",
-            "Assisted with logistical operations and on-site event activities.",
-            "Coordinated with committee members to ensure resources were available when needed.",
-            "Contributed to the smooth execution of the program and participant activities."
-        ]
-    }
+    { title: "IT Intern", company_name: "PT Summarecon Agung Tbk", date: "October 2026 - Present", icon: summarecon, iconBg: "#f1f5f9", category: "Work Experiences", points: [
+        "Contribute to the development and modernization of internal web applications using PHP and Laravel, translating business requirements into functional application features.",
+        "Develop frontend interfaces and application modules, including master data management, form handling, search functionality, and configurable workflows.",
+        "Analyze API endpoints and database structures to identify data sources, map required fields, and support frontend-backend integration.",
+        "Support data migration and integration between legacy SQL Server databases and PostgreSQL, including querying, mapping, and validating data consistency.",
+        "Collaborate with the IT team to clarify business rules, troubleshoot technical issues, and validate application functionality throughout development."
+    ]},
+    { title: "Robotic Extracurricular Instructor", company_name: "Syafana Junior High School", date: "August 2025 - Present", icon: syafana, iconBg: "#ffe8cc", category: "Work Experiences", points: [
+        "Guide students in developing interactive games and programs using visual programming blocks.",
+        "Introduce programming fundamentals, logical thinking, and computational thinking through hands-on coding challenges.",
+        "Design engaging learning activities that help students understand programming logic, problem-solving, and sequential instructions."
+    ]},
+    { title: "IoT Engineer Intern", company_name: "PT Startup Inovasi Indonesia", date: "January 2026 - July 2026", icon: inventing, iconBg: "#dbeafe", category: "Work Experiences", points: [
+        "Developed educational robotics and IoT products from concept design to system testing and product evaluation.",
+        "Integrated sensors, actuators, Arduino, and microcontrollers into embedded systems while performing hardware assembly, troubleshooting, and system validation.",
+        "Designed robotics curricula and hands-on programming modules for elementary and junior high school STEM education.",
+        "Conducted robotics workshops in multiple schools, mentoring students through practical robotics and embedded systems projects.",
+        "Collaborated with cross-functional teams using Scrum methodology throughout product development and iterative testing."
+    ]},
+    { title: "Participant", company_name: "Garuda Hacks 6.0", date: "July 2025", icon: garudahacks, iconBg: "#fff3cd", category: "Competitions", points: [
+        "Developed Frugal Watt, a functional prototype that combined embedded hardware and software to monitor electricity consumption in real time.",
+        "Led the hardware development by integrating sensors, microcontrollers, circuit wiring, and soldering for the prototype.",
+        "Collaborated with a cross-functional team to design, develop, and deliver a working solution within a 30-hour hackathon."
+    ]},
+    { title: "Academic Coordinator", company_name: "ACES GEN XV", date: "November 2024 - December 2025", icon: aces, iconBg: "#d9e6ff", category: "Organizational Experiences", points: [
+        "Led academic development initiatives, including ACES of Tutor (AoT) and Company Visit programs, restructuring AoT to improve student participation and tutoring effectiveness.",
+        "Coordinated university-mandated tutoring for Computer Engineering repeaters, contributing to approximately 10% improvement in course comprehension and increased likelihood of passing retaken courses.",
+        "Conducted 30+ academic outreach sessions, engaging 300+ prospective students to introduce the Computer Engineering curriculum, career pathways, and industry opportunities."
+    ]},
+    { title: "Arduino Activity Developer", company_name: "PPTK UMN 2025", date: "May 2025 - September 2025", icon: pptk, iconBg: "#f5e8ff", category: "Organizational Experiences", points: [
+        "Designed and developed an Arduino-based interactive learning activity for freshman orientation, covering concept planning through implementation.",
+        "Prepared complete hardware kits, circuit schematics, and mentor documentation to support hands-on learning sessions.",
+        "Coordinated component procurement and equipment preparation to ensure smooth execution without resource conflicts."
+    ]},
+    { title: "Accommodation Coordinator", company_name: "EUFORIA UMN", date: "February 2025 - September 2025", icon: euforia, iconBg: "#ffe5ef", category: "Organizational Experiences", points: [
+        "Coordinated accommodation and logistics for guest stars, vendors, and event operations during EUFORIA UMN.",
+        "Managed rider requests, food supplies, and logistical resources, delivering 200+ requested items without shortages or significant delays.",
+        "Collaborated with cross-functional committees to ensure smooth event execution and maintain service quality."
+    ]},
+    { title: "Accommodation Coordinator", company_name: "UVC UMN 2024", date: "January 2024 - December 2024", icon: uvc, iconBg: "#e8f0ff", category: "Organizational Experiences", points: [
+        "Coordinated venue logistics, equipment, and event setup to maintain operational readiness throughout the championship.",
+        "Responded to continuous rainfall by relocating and protecting electronic equipment, minimizing event disruptions and maintaining court readiness.",
+        "Collaborated with the organizing committee on venue operations and event decorations."
+    ]},
+    { title: "Accommodation Coordinator", company_name: "PPTK UMN 2024", date: "May 2024 - September 2024", icon: pptk, iconBg: "#fef3c7", category: "Organizational Experiences", points: [
+        "Coordinated accommodation, venue logistics, equipment preparation, and operational readiness for the Computer Engineering freshman orientation program.",
+        "Supported the development and execution of the 'Tebak & Rangkai' Arduino-based activity, preparing component kits, circuit schematics, and supporting guides.",
+        "Managed equipment procurement and resource preparation to ensure smooth sessions without resource conflicts."
+    ]},
+    { title: "Accommodation Staff", company_name: "UMN FESTIVAL 2024", date: "March 2024 - November 2024", icon: umnfest, iconBg: "#f0f4ff", category: "Organizational Experiences", points: [
+        "Supported event logistics through equipment preparation, venue coordination, and operational readiness.",
+        "Collaborated with committee members to manage event resources and support on-site operations."
+    ]},
+    { title: "Accommodation Staff", company_name: "ACES DAY 2024", date: "May 2024 - November 2024", icon: acesday, iconBg: "#e8f0ff", category: "Organizational Experiences", points: [
+        "Supported event planning and execution through equipment preparation, venue coordination, and operational logistics.",
+        "Collaborated with committee members to manage resources and ensure smooth on-site activities."
+    ]},
+    { title: "Accommodation Staff", company_name: "ACES DAY 2023", date: "May 2023 - November 2023", icon: acesday23, iconBg: "#e8f0ff", category: "Organizational Experiences", points: [
+        "Supported event preparation, venue arrangements, and logistical operations for the annual ACES Day program.",
+        "Coordinated with committee members to ensure resource availability and successful event execution."
+    ]}
 ];
 
 export const socialLinks = [
@@ -318,10 +173,22 @@ export const socialLinks = [
 
 export const projects = [
     {
+        iconUrl: frugal,
+        theme: 'btn-back-green',
+        category: 'IoT & Robotics',
+        name: 'Frugal Watt – IoT Energy Monitoring',
+        description: 'I led the hardware development of Frugal Watt, integrating the sensors and microcontroller, assembling and soldering the circuit, and troubleshooting the prototype during Garuda Hacks 6.0. A key challenge was validating sensor readings and the data flow so electricity usage could be monitored consistently within the 30-hour hackathon.',
+        link: 'https://github.com/Deswandy/Labubuntu',
+        technologies: ['ESP32', 'Next.js', 'TypeScript'],
+    },
+
+    {
         iconUrl: follower1,
         theme: 'btn-back-sky',
+        category: 'IoT & Robotics',
+        category: 'IoT & Robotics',
         name: 'Follower Robot – Version 1',
-        description: 'Developed an Arduino-based wall-following robot for educational robotics. Uses ultrasonic sensing and motor control to detect surrounding distances and perform autonomous movement.',
+        description: 'I focused on the hardware implementation of this Arduino-based wall-following robot, connecting the ultrasonic sensor and motor system and troubleshooting wiring and sensor response. A key challenge was getting consistent distance readings so the robot could react and move along a wall reliably.',
         link: 'https://github.com/njynbil/FollowerRobot-Version1',
         technologies: ['Arduino', 'C++', 'Motor Control'],
     },
@@ -329,8 +196,9 @@ export const projects = [
     {
         iconUrl: follower2,
         theme: 'btn-back-indigo',
+        category: 'IoT & Robotics',
         name: 'Follower Robot – Version 2',
-        description: 'Developed an educational wall-following robot platform for hands-on robotics learning. Designed to support different programs and experiments involving sensors, motor control, and autonomous movement.',
+        description: 'I focused on building and wiring this educational wall-following robot as a reusable hardware platform for students to program themselves. The main challenges were assembling the components reliably, troubleshooting sensor and motor connections, and ensuring the robot responded consistently when students ran their own code.',
         link: 'https://github.com/njynbil/FollowerRobot-Version2',
         technologies: ['Arduino', 'Sensors', 'Motor Control'],
     },
@@ -338,8 +206,9 @@ export const projects = [
     {
         iconUrl: gyrocar,
         theme: 'btn-back-violet',
+        category: 'IoT & Robotics',
         name: 'Gyro RC Car',
-        description: 'Developed a wireless gesture-controlled RC car using dual ESP32 microcontrollers and an MPU6050 gyroscope. Enables real-time vehicle movement through hand gestures using transmitter and receiver systems.',
+        description: 'I worked on the hardware integration for this gesture-controlled RC car, connecting the MPU6050 and dual ESP32 transmitter-receiver system. A key challenge was troubleshooting the sensor and wireless data flow so hand movements translated into consistent vehicle responses.',
         link: 'https://github.com/njynbil/GyroRobot',
         technologies: ['ESP32', 'MPU6050', 'Wireless Control'],
     },
@@ -347,8 +216,9 @@ export const projects = [
     {
         iconUrl: spiderbot,
         theme: 'btn-back-amber',
+        category: 'IoT & Robotics',
         name: 'Spider Robot',
-        description: 'Developed an Arduino-based spider robot using multiple servo motors for coordinated walking movements. Focused on hardware integration, embedded programming, and motion control for educational robotics.',
+        description: 'I focused on assembling and integrating the Arduino, servo motors, and wiring for this educational spider robot. I troubleshot motor and connection issues while tuning the coordinated movement needed for a stable walking sequence.',
         link: 'https://github.com/njynbil/SpiderRobot',
         technologies: ['Arduino', 'Servo Motor', 'C++'],
     },
@@ -356,8 +226,9 @@ export const projects = [
     {
         iconUrl: tetris,
         theme: 'btn-back-rose',
+        category: 'IoT & Robotics',
         name: 'Tetris Game',
-        description: 'Developed an Arduino-based Tetris game as an educational embedded systems project. Implements interactive gameplay through display output, physical controls, piece movement, rotation, and line clearing.',
+        description: 'I contributed to the hardware setup for this Arduino-based Tetris game, connecting the display and physical controls with the embedded system. I troubleshot input and display connections to help ensure player actions and game output were registered consistently.',
         link: 'https://github.com/njynbil/TetrisGame',
         technologies: ['Arduino', 'Display', 'C++'],
     },
@@ -365,8 +236,9 @@ export const projects = [
     {
         iconUrl: dino,
         theme: 'btn-back-emerald',
+        category: 'IoT & Robotics',
         name: 'Dino Game',
-        description: 'Developed an Arduino-based Dino Game as an educational embedded systems project. Implements an interactive endless runner with character movement, jumping, obstacle handling, and score tracking.',
+        description: 'I contributed to the hardware setup for this Arduino-based Dino Game, integrating its display and physical controls. I worked through wiring and input troubleshooting so button presses, gameplay actions, and on-screen updates responded reliably.',
         link: 'https://github.com/njynbil/DinoGame',
         technologies: ['Arduino', 'Display', 'C++'],
     },
@@ -374,26 +246,19 @@ export const projects = [
     {
         iconUrl: rfid,
         theme: 'btn-back-blue',
+        category: 'IoT & Robotics',
         name: 'RFID Scanner System for Optik Gembira',
-        description: 'Created an RFID-based item scanning system for a local optical store called Optik Gembira to help track inventory and streamline item identification. Designed the hardware workflow and embedded logic using ESP32 and RFID modules.',
+        description: 'I focused on the ESP32 and RFID hardware integration for this item-scanning system for Optik Gembira. I worked on wiring and troubleshooting the reader and validating tag reads so item identification could be captured consistently for inventory workflows.',
         link: 'https://github.com/Petinggi-Teknik-Indonesia/lensz-rfid-scanner',
-        technologies: ['ESP32', 'RFID', 'C++'],
-    },
-
-    {
-        iconUrl: frugal,
-        theme: 'btn-back-green',
-        name: 'Frugal Watt – IoT Energy Monitoring',
-        description: 'Developed an IoT prototype for real-time electricity usage monitoring using sensors and microcontroller integration. Built during Garuda Hacks 6.0 under a strict 30-hour time limit, handling all hardware design, wiring, and embedded programming.',
-        link: 'https://github.com/Deswandy/Labubuntu',
-        technologies: ['ESP32','IoT', 'Sensors'],
+        technologies: ['ESP32', 'RFID', 'Hardware Integration'],
     },
 
     {
         iconUrl: robot,
         theme: 'btn-back-red',
+        category: 'IoT & Robotics',
         name: 'Self-Balancing Robot (Arduino + MPU6050)',
-        description: 'Built a two-wheel self-balancing robot using Arduino Uno, MPU6050 gyro, and PID control. Developed the full hardware setup and calibration logic while experimenting with real-time balancing control and motor tuning.',
+        description: 'I focused on the hardware setup for this two-wheel self-balancing robot, integrating the Arduino Uno, MPU6050, and motor connections. I troubleshot wiring and sensor readings, then worked through calibration and motor tuning to improve the robot\'s real-time balance response.',
         link: 'https://github.com/njynbil/self-balancing-robot',
         technologies: ['Arduino', 'MPU6050', 'PID Control'],
     },
@@ -401,18 +266,21 @@ export const projects = [
     {
         iconUrl: jualanmommy,
         theme: 'btn-back-pink',
+        category: 'Web Development',
         name: 'JualanMommy E-Commerce Website',
-        description: 'Built a frontend interface for JualanMommy, an UMKM-focused website created to support product visibility and online sales. Designed to help small businesses reach more customers through a simple and accessible web platform.',
+        description: 'My contribution to JualanMommy focused on the frontend, building Laravel Blade interfaces for an UMKM e-commerce website. I worked with PHP and Blade templates to present products and create a clear, accessible browsing experience.',
         link: 'https://github.com/lattemilii/UAS-WEBPROG',
-        technologies: ['HTML', 'CSS', 'JavaScript'],
+        technologies: ['Laravel', 'PHP', 'Blade'],
     },
 
     {
         iconUrl: kspm,
         theme: 'btn-back-black',
+        category: 'Web Development',
         name: 'KSPM Organizational Website',
-        description: 'Developed the frontend of an organizational website for Kelompok Studi Pasar Modal (KSPM). The platform was designed to showcase organizational profiles, activities, and educational content as part of a collaboration project.',
+        description: 'Our team developed the complete frontend for the Kelompok Studi Pasar Modal (KSPM) website, and I contributed across the frontend implementation and API integration. We connected the interface to API data to present the organization\'s profile, activities, and educational content in a cohesive web experience.',
         link: 'https://github.com/Deswandy/KSPM-PTI-UAS',
-        technologies: ['HTML', 'CSS', 'JavaScript'],
+        technologies: ['React', 'JavaScript', 'REST API'],
     },
 ];
+

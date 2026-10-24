@@ -1,10 +1,14 @@
 import { skills, experiences } from '../constants';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ExperienceModal from '../components/ExperienceModal';
 import CTA from '../components/CTA';
 
 const About = () => {
   const [selectedExp, setSelectedExp] = useState(null);
+  const [activeSkillTooltip, setActiveSkillTooltip] = useState(null);
+  const skillTooltipTimer = useRef(null);
+
+  useEffect(() => () => clearTimeout(skillTooltipTimer.current), []);
 
   return (
     <section className="max-container">
@@ -14,72 +18,85 @@ const About = () => {
 
       <div className="mt-5 flex flex-col gap-3 text-slate-500">
         <p className="text-justify leading-relaxed">
-          A Computer Engineering student with hands-on experience in IoT, embedded systems, robotics, and web development.
-          I have worked on hardware–software integration projects involving Arduino, ESP32, sensors, actuators, and embedded programming.
-          I also have experience developing web-based applications and backend systems, allowing me to work across both hardware and software.
-          My professional experience in educational robotics and product development has given me practical exposure to engineering, system integration, and technical problem-solving.
-          I’m continuously expanding my skills across hardware and software while looking for opportunities to build practical and impactful technology solutions.
+          Computer Engineering student at Universitas Multimedia Nusantara with experience in web applications, backend systems, and IoT. Currently developing internal applications at PT Summarecon Agung Tbk using PHP, Laravel, API integration, and PostgreSQL. Previously built embedded and robotics solutions through hardware integration and teamwork.
         </p>
       </div>
 
-      <div className="py-10 flex flex-col">
+      <div className="mt-12 flex flex-col">
         <h3 className="subhead-text">My Skills</h3>
 
-        <div className="mt-12 grid grid-cols-3 gap-5 sm:flex sm:flex-wrap sm:gap-8">
+        <div className="mt-8 grid grid-cols-3 gap-x-3 gap-y-5 sm:flex sm:flex-wrap sm:gap-6">
           {skills.map((skill) => (
-            <div key={skill.name} className="block-container w-16 h-16">
-              <div className="btn-back rounded-xl" />
-              <div className="btn-front rounded-xl flex justify-center items-center">
-                <img
-                  src={skill.imageUrl}
-                  alt={skill.name}
-                  className="w-1/2 h-1/2 object-contain"
-                />
-              </div>
+            <div key={skill.name} className="group relative h-16 w-16">
+              <button
+                type="button"
+                aria-label={skill.name}
+                aria-expanded={activeSkillTooltip === skill.name}
+                onClick={(event) => {
+                  event.preventDefault();
+                  clearTimeout(skillTooltipTimer.current);
+                  setActiveSkillTooltip(skill.name);
+                  skillTooltipTimer.current = setTimeout(() => {
+                    setActiveSkillTooltip((activeSkill) => activeSkill === skill.name ? null : activeSkill);
+                  }, 1500);
+                }}
+                className="block-container skill-card group relative h-16 w-16 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              >
+                <span className="btn-back rounded-xl" />
+                <span className="btn-front rounded-xl border border-slate-200/80 flex justify-center items-center shadow-sm transition-all duration-300 group-hover:border-blue-200 group-hover:shadow-md">
+                  <img
+                    src={skill.imageUrl}
+                    alt=""
+                    className="w-1/2 h-1/2 object-contain"
+                  />
+                </span>
+              </button>
+              <span
+                role="tooltip"
+                aria-hidden={activeSkillTooltip !== skill.name}
+                className={`skill-tooltip pointer-events-none absolute -top-3 right-0 z-30 whitespace-nowrap rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-700 shadow-md transition-opacity duration-150 ${
+                  activeSkillTooltip === skill.name
+                    ? 'opacity-100'
+                    : 'opacity-0'
+                }`}
+              >
+                {skill.name}
+              </span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="py-16">
+      <div className="mt-12">
         <h3 className="subhead-text">Experiences</h3>
 
         <div className="mt-5 flex flex-col gap-3 text-slate-500">
           <p className="text-justify leading-relaxed">
-            Explore my organizational experiences, leadership roles, and competition involvement throughout my studies.
-            Each experience highlights the responsibilities and skills I developed along the way.
+            Explore my experience across software development, IoT and robotics, teaching, and campus leadership. These roles show how I solve practical problems, collaborate with different teams, and turn ideas into useful outcomes. Open a card for details about my responsibilities and contributions.
           </p>
         </div>
 
-        <div className="mt-16 w-full">
+        <div className="mt-10 w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {experiences.map((exp) => (
               <div key={exp.title} className="flex flex-col items-stretch">
-                <div
-                  role="button"
-                  tabIndex={0}
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-label={`View details for ${exp.title} at ${exp.company_name}`}
                   onClick={() => setSelectedExp(exp)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      setSelectedExp(exp);
-                    }
-                  }}
-                  className="block-container w-full min-h-48 p-5 flex flex-col justify-start items-start cursor-pointer"
+                  className="block-container experience-card group h-60 w-full p-5 flex flex-col justify-start items-start text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 >
                   <div className="btn-back rounded-xl" />
 
-                  <div className="btn-front rounded-xl p-5 flex flex-col gap-3">
+                  <div className="btn-front rounded-xl border border-slate-200/80 p-5 flex flex-col gap-3 shadow-sm transition-all duration-300 group-hover:border-blue-200 group-hover:shadow-md">
                     {exp?.icon ? (
                       <img
                         src={exp.icon}
                         className="w-10 h-10 object-contain"
                         alt={exp.company_name}
                       />
-                    ) : (
-                      <div className="w-10 h-10 bg-white/20 rounded mb-2 flex items-center justify-center">
-                        No
-                      </div>
-                    )}
+                    ) : null}
 
                     <h3 className="font-semibold text-lg text-slate-800">
                       {exp.title}
@@ -92,8 +109,12 @@ const About = () => {
                     <p className="text-slate-400 text-xs">
                       {exp.date}
                     </p>
+
+                    <span className="mt-auto flex items-center gap-1 text-sm font-medium text-blue-600">
+                      View details <span aria-hidden="true">&rarr;</span>
+                    </span>
                   </div>
-                </div>
+                </button>
               </div>
             ))}
           </div>
@@ -117,3 +138,4 @@ const About = () => {
 };
 
 export default About;
+
