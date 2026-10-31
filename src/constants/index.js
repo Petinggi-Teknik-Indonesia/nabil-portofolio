@@ -134,10 +134,11 @@ export const experiences = [
         "Responded to continuous rainfall by relocating and protecting electronic equipment, minimizing event disruptions and maintaining court readiness.",
         "Collaborated with the organizing committee on venue operations and event decorations."
     ]},
-    { title: "Accommodation Coordinator", company_name: "PPTK UMN 2024", date: "May 2024 - September 2024", icon: pptk, iconBg: "#fef3c7", category: "Organizational Experiences", points: [
-        "Coordinated accommodation, venue logistics, equipment preparation, and operational readiness for the Computer Engineering freshman orientation program.",
-        "Supported the development and execution of the 'Tebak & Rangkai' Arduino-based activity, preparing component kits, circuit schematics, and supporting guides.",
-        "Managed equipment procurement and resource preparation to ensure smooth sessions without resource conflicts."
+    { title: "Accommodation Staff", company_name: "Perkenalan Program Studi Teknik Komputer 2024", date: "May 2024 - September 2024", icon: pptk, iconBg: "#fef3c7", category: "Organizational Experiences", points: [
+        "Supported logistics and activity preparation for the Computer Engineering freshman orientation program.",
+        "Prepared equipment, learning materials, and venue arrangements for program activities.",
+        "Assisted in preparing component kits and supporting materials for the 'Tebak & Rangkai' Arduino-based activity.",
+        "Coordinated resource preparation to ensure equipment availability throughout the sessions."
     ]},
     { title: "Accommodation Staff", company_name: "UMN FESTIVAL 2024", date: "March 2024 - November 2024", icon: umnfest, iconBg: "#f0f4ff", category: "Organizational Experiences", points: [
         "Supported event logistics through equipment preparation, venue coordination, and operational readiness.",
